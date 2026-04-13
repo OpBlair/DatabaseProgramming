@@ -1,71 +1,60 @@
-# Development of a Functional Agricultural Services Database
-**Course Project: Year 2 Semester 2** **Group 12**
+# 📊 Database Programming Journey
 
-## 📌 Project Overview
-This project involves the design and implementation of **AgriculturalSupportDB**, a relational database system developed for the Ministry of Agriculture, Animal Industry and Fisheries (MAAIF). The system solves the challenge of tracking coffee production, input distribution, and agricultural extension services across Uganda.
+## 📌 Overview
 
-### The Team (Group 12)
-* Kobumanzi Trishia 
-* Kamagara Albert 
-* Owino Esther Lynn 
-* Tonny Blair Daniel 
-* Onyang Bridget
+This repository documents my learning journey in Database Programming, from writing basic SQL queries to designing complex database schemas. It serves as a personal archive of exercises, experiments, and projects as I grow my skills in Database Management Systems (DBMS).
 
 ---
 
-## ⚙️ System Capabilities
-The database facilitates a tripartite ecosystem involving **Farmers**, **Extension Workers**, and **Ministry Staff**:
-* **Farmer Management:** Registration of farmers and farms, including GPS coordinates and coffee varieties (Robusta/Arabica).
-* **Production Tracking:** Seasonal logging of harvest data with a verification workflow.
-* **Extension Services:** Logging of farm visits, advisory notes, and follow-up requirements.
-* **Supply Chain:** Tracking the distribution of seedlings, fertilizers, and tools from central inventory to specific farms.
+## 🛠 Tech Stack
+
+* **Languages:** SQL (PostgreSQL, MySQL)
+* **Tools:** MySQL Workbench
+* **Core Concepts:**
+
+  * Database Normalization
+  * ACID Properties
+  * Indexing
+  * Stored Procedures
+  * Views
+  * Triggers
 
 ---
 
-## 🛠 Database Design & Architecture
+## 📂 Directory Structure
 
-### Key Features (EERD)
-* **Generalization & Specialization:** Utilizes a `Users` parent entity with disjoint child entities (`Farmer`, `ExtensionWorker`, `MinistryStaff`).
-* **Weak Entities:** `ProductionRecords` (dependent on Farm/Season) and `FarmVisits` (dependent on Farm/Worker).
-* **Data Integrity:** Implemented via Foreign Keys with `ON DELETE CASCADE` for geographical hierarchies (District → Sub-County → Village).
+* **/Basics**
+  Covers simple CRUD operations and foundational `SELECT` queries.
 
-### Technical Constraints & Assumptions
-1.  **Role Exclusivity:** A user can only hold one primary role.
-2.  **Location Accuracy:** Every farm must have GPS coordinates and belong to a specific administrative village.
-3.  **Workflow Validation:** A farm must have a logged visit before becoming eligible for product distribution.
-4.  **Verification:** Production records remain "Pending" until verified by an assigned Extension Worker.
+* **/Intermediate**
+  Focuses on joins, subqueries, and aggregate functions.
 
----
+* **/Advanced**
+  Explores triggers, views, and performance optimization techniques.
 
-## 💻 Implementation Details
-
-### Security & Role-Based Access Control (RBAC)
-We implemented specific database roles to ensure data security:
-* **Farmer:** Access to personal dashboards and production input.
-* **Worker:** Permissions to update production status, log visits, and manage distributions.
-* **Staff:** Full administrative privileges over the database and inventory.
-
-### Automation & Logic
-* **Triggers:** * `disjoint_user_role`: Enforces that a user cannot belong to multiple roles.
-    * `stock_update`: Automatically deducts inventory upon distribution.
-    * `verify_production`: Validates status updates by extension workers.
-* **Stored Procedures:**
-    * `RegisteringSystemUser`: Atomic registration across the `Users` and role-specific tables.
-    * `RecordProduction`: Streamlines the seasonal data entry for farmers.
-* **Views:** Custom dashboards for Farmers (Production status), Staff (Inventory levels), and Workers (Pending tasks).
+* **/Projects**
+  Contains full-scale database design and implementation projects.
 
 ---
 
-## 💾 Backup & Recovery
-The database is backed up using `mysqldump` to ensure data persistence:
-```bash
-mysqldump -u root -p --routines --triggers AgriculturalSupportDB > agric_backup.sql
-```
+## 🚀 Key Learning Milestones
+
+* [ ] Master basic joins (INNER, LEFT, RIGHT)
+* [ ] Understand database normalization (1NF, 2NF, 3NF)
+* [ ] Successfully implement stored procedures
 
 ---
 
-## 📚 References
-* Government of Uganda (2021). *The National Coffee Act*.
-* Uganda Coffee Development Authority (UCDA).
-* Ministry of Agriculture, Animal Industry and Fisheries (MAAIF).
+## 🎯 Goals
+
+* Build efficient and scalable database systems
+* Write optimized and maintainable SQL queries
+* Apply best practices in database design
+
+---
+
+## 📈 Progress
+
+This repository will continue to evolve as I deepen my understanding of database systems and take on more complex challenges.
+
 ---
